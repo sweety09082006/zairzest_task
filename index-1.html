@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZAIRZA Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900|Open+Sans:400,600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: #f8fafd;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+    }
+    .left {
+      flex: 1.2;
+      background:  url('Back.jpg') center center/cover no-repeat; 
+      position: relative;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 60px;
+    }
+    .left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 34, 51, 0.55);
+      z-index: 0;
+    }
+    .left-content {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+    }
+    .left h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin: 0 0 12px 0;
+      line-height: 1.1;
+    }
+    .left h1 span {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    .left p {
+      margin-top: 18px;
+      font-size: 1rem;
+      color: #e0e0e0;
+      line-height: 1.6;
+      max-width: 400px;
+    }
+    .dot-indicator {
+      margin-top: 36px;
+      display: flex;
+      gap: 8px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.6;
+    }
+    .dot.active {
+      opacity: 1;
+      background: #1cc8ee;
+    }
+
+    .right {
+      flex: 1;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 350px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px 32px 32px 32px;
+      box-shadow: 0 4px 32px 0 rgba(30, 60, 90, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+    .login-box h2 {
+      color: #1cc8ee;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .login-box p {
+      color: #7d8ca3;
+      font-size: 0.98rem;
+      margin-bottom: 18px;
+    }
+    .login-box input[type="email"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 7px;
+      font-size: 1rem;
+      background: #f8fafc;
+      
+    }
+    .login-box input:focus {
+      border: 1.5px solid #1cc8ee;
+      outline: none;
+    }
+    .login-box .password-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .login-box .password-row input {
+      margin-bottom: 0;
+    }
+    .login-box .password-row .eye {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b0b7c3;
+      cursor: pointer;
+    }
+    .login-box .links {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+    .login-box .links a {
+      color: #1cc8ee;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-box .links a:hover {
+      text-decoration: underline;
+    }
+    .login-box .login-btn {
+      width: 100%;
+      padding: 12px 0;
+      background: #1cc8ee;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 16px;
+      
+    }
+    .login-box .login-btn:hover {
+      background: #1399bb;
+    }
+    .login-box .or {
+      text-align: center;
+      color: #b0b7c3;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .login-box .google-btn {
+      width: 100%;
+      padding: 10px 0;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 7px;
+      background: #fff;
+      color: #222;
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      
+    }
+    .login-box .google-btn:hover {
+      border: 1.5px solid #1cc8ee;
+    }
+    .login-box .google-btn img {
+      width: 12px;
+      height: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+      .left, .right {
+        flex: unset;
+        width: 100vw;
+        min-height: 48vh;
+      }
+      .left {
+        padding: 40px 24px;
+      }
+      .login-box {
+        margin: 32px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="left-content">
+        <h1>
+          Enter the untamed<br>wilderness with<br>
+          <span>ZAIRZA</span>
+        </h1>
+        <p>
+          Release all your stress with the exciting Tech and Fun events in the most awaited fest. Zairzest 3.0 presented by Zairza.
+        </p>
+        <div class="dot-indicator">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <form class="login-box">
+        <h2>Become the Beast of<br>the Cyber Forest</h2>
+        <p>Sign in to get into Zairzest</p>
+        <input type="email" placeholder="Email here" required>
+        <div class="password-row">
+          <input type="password" placeholder="Password" required>
+        
+        </div>
+        <div class="links">
+          <span>Don't remeber Password <br><a href="#">Reset Password</a></span>
+          <span>Not a Member Yet? <br> <a href="#">Sign Up</a></span>
+        </div>
+        <button class="login-btn" type="submit">Login</button>
+        <div class="or">or
+            
+        </div>
+        <button class="google-btn" type="button">
+          Sign in with<b><img src="google-logo.png" alt="Google Logo"></b>
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

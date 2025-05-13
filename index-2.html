@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zairzest 4.0 - Hunt the Future in the Cyber Forest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for Montserrat -->
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    :root {
+      --primary: #19c2ff;
+      --primary-dark: #0e7ea8;
+      --bg: #181818;
+      --bg-card: #222;
+      --white: #fff;
+      --text: #eaeaea;
+      --muted: #bdbdbd;
+      --accent: #19c2ff;
+      --font: 'Montserrat', Arial, sans-serif;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      box-sizing: border-box;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+    /* Navbar */
+    .navbar {
+      width: 100vw;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    .navbar-logo {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.25em; padding: 0 23px;
+      color: var(--white);
+    font-family: 'Ethnocentric Rg', Arial, sans-serif;;
+    }
+    .navbar-logo span {
+      color: var(--primary);
+    }
+    .navbar-links {
+      display: flex;
+      gap: 38px;
+    }
+    .navbar-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.08rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding: 2px 0;
+    }
+    .navbar-links a:hover,
+    .navbar-links .register {
+      color: var(--primary);
+    }
+    .navbar-links .register {
+      background: var(--primary);
+      color: #181818;
+      padding: 8px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      margin-left: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .navbar-links .register:hover {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      width: 100vw;
+      background: url('Back.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 68px;
+    }
+    .hero-content {
+      margin-left: 6vw;
+      z-index: 2;
+      max-width: 510px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+    .hero-title {
+      font-size: 2.7rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      text-shadow: 0 4px 24px #19c2ff33;
+      margin-bottom: 20px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+    }
+    .hero-buttons .btn {
+      padding: 13px 32px;
+      border: none;
+      border-radius: 7px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 10px #19c2ff44;
+    }
+    .hero-buttons .btn-explore {
+      background: transparent;
+      color: #fff;
+      border: 2px solid var(--primary);
+      margin-right: 5px;
+    }
+    .hero-buttons .btn-explore:hover {
+      background: var(--primary);
+      color: #181818;
+    }
+    .hero-buttons .btn-register {
+      background: var(--primary);
+      color: #181818;
+    }
+    .hero-buttons .btn-register:hover {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+
+    /* Zen 4.0 Section */
+    .zen-section {
+      width: 100vw;
+      background: #181818;
+      padding: 80px 0 40px 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .zen-container {
+      display: flex;
+      width: 90vw;
+      max-width: 1100px;
+      gap: 48px;
+      align-items: center;
+      justify-content: center;
+    }
+    .zen-image {
+      flex: 1.1;
+      text-align: center;
+    }
+    .zen-image img {
+      width: 340px;
+      max-width: 100%;
+      border-radius: 10px;
+      filter: drop-shadow(0 0 30px #19c2ff60);
+      background: transparent;
+    }
+    .zen-content {
+      flex: 1.7;
+      color: var(--text);
+      margin-top: 20px;
+    }
+    .zen-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      margin-bottom: 14px;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .zen-title span {
+      color: var(--primary);
+    }
+    .zen-description {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 10px;
+    }
+
+    /* Events Section */
+    .events-section {
+      background: #181818;
+      padding: 25px 0 70px 0;
+      text-align: center;
+    }
+    .events-title {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .events-subtitle {
+      font-size: 1.02rem;
+      color: var(--muted);
+      margin-bottom: 48px;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .events-container {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      width: 90vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .event-card {
+      width: 350px;
+      height: 210px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 18px;
+    }
+    .event-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 15px 32px #19c2ff33;
+    }
+    .event-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 60%, transparent 100%);
+      z-index: 1;
+    }
+    .event-card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 22px 18px 22px;
+      text-align: left;
+      z-index: 2;
+    }
+    .event-card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .event-card-subtitle {
+      font-size: 1rem;
+      color: #d2eaff;
+      opacity: 0.85;
+    }
+
+    /* About Section (Footer) */
+    .about-section {
+      background: #181818;
+      padding: 70px 0 40px 0;
+      width: 100vw;
+    }
+    .about-container {
+      width: 90vw;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .about-content {
+      max-width: 540px;
+    }
+    .about-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 18px;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .about-description {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .about-address {
+      color: #bdbdbd;
+      font-size: 0.98rem;
+      margin-bottom: 3px;
+    }
+    .about-phone {
+      color: #bdbdbd;
+      font-size: 0.98rem;
+    }
+    .about-social {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 18px;
+      flex: 1;
+      margin-top: 10px;
+    }
+    .social-links {
+      display: flex;
+      gap: 22px;
+    }
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      font-size: 1.5rem;
+      color: #181818;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+    .presented-by {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      font-size: 1rem;
+      color: #bdbdbd;
+    }
+    .presented-by img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 950px) {
+      .zen-container, .about-container, .events-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .about-content, .about-social {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+      }
+      .about-social {
+        margin-top: 40px;
+      }
+      .presented-by {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 10px;
+        gap: 10px;
+      }
+      .navbar-links {
+        gap: 16px;
+      }
+      .hero-content {
+        margin-left: 0;
+        padding: 0 10px;
+        max-width: 95vw;
+      }
+      .hero-title {
+        font-size: 1.5rem;
+      }
+      .zen-title, .events-title, .about-title {
+        font-size: 1.3rem;
+      }
+      .zen-image img {
+        width: 200px;
+      }
+      .event-card {
+        width: 98vw;
+        height: 180px;
+      }
+      .about-section, .zen-section, .events-section {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+    <img src="ZaiRzA4.0.png" alt="zairza-logo" height="34px" width="300px">
+    </div>
+    <div class="navbar-links">
+      <a href="#">About Us</a>
+      <a href="#">Sign In</a>
+      <a href="#" class="register">Register Now</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-title">
+        Hunt the Future in the<br>Cyber Forest
+      </div>
+      <div class="hero-buttons">
+        <button class="btn btn-explore">Explore Events</button>
+        <button class="btn btn-register">Register Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zen 4.0 Section -->
+  <section class="zen-section">
+    <div class="zen-container">
+      <div class="zen-image">
+        <img src="a8d018a060392584f327d5676c4864b594cf757d.png" alt="Cyber Panda">
+      </div>
+      <div class="zen-content">
+        <div class="zen-title"><span>Zen 4.0:</span> Your Guide in<br>The Cyber Wild!</div>
+        <div class="zen-description">
+          “To forge the future, we must first innovate it.” As we move beyond our journey through the tech wilderness, we welcome you to the dynamic metropolis of technology. Embark with us as we traverse the cutting-edge neighborhoods of Cybercity, exploring diverse tech ecosystems, development pathways, recursion, data structures, and languages such as Python and Firefox. The most exciting revelations are still to come. Stay tuned for groundbreaking experiences ahead!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="events-section">
+    <div class="events-title">Events for you</div>
+    <div class="events-subtitle">
+      Everything has been made simple for you to scroll around and get the most out of the options available.
+    </div>
+    <div class="events-container">
+      <div class="event-card" style="background-image: url('6e5a1acbd43790bebd94048e10d91f33a4046ae8.jpg');">
+        <div class="event-card-content">
+          <div class="event-card-title">Tech Events</div>
+          <div class="event-card-subtitle">Click to view</div>
+        </div>
+      </div>
+      <div class="event-card" style="background-image: url('81eeae998eaf11e2a7342ec09194109b932b683e.jpg');">
+        <div class="event-card-content">
+          <div class="event-card-title">Fun Events</div>
+          <div class="event-card-subtitle">Click to view</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="about-container">
+      <div class="about-content">
+        <div class="about-title">Want to Know<br>about us ?</div>
+        <div class="about-description">
+          Come and know more about Zairza and join our community to experience such more amazing stuffs.
+        </div>
+        <div class="about-address">
+          OUTR (CET Campus), Kalinga Nagar, Ghatikia, Bhubaneswar, Odisha.<br>
+          +91 7205883336
+        </div>
+      </div>
+      <div class="about-social">
+        <div class="social-links">
+          <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon" title="Email"><i class="far fa-envelope"></i></a>
+          <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="presented-by">
+          Presented by 
+          <img src="zairza-logo.webp" alt="Logo">
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
